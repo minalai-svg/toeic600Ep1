@@ -9,10 +9,10 @@
             --primary: #2c3e50;
             --secondary: #f39c12; 
             --blue: #3498db;
-            /* --- 按鈕顏色更新 --- */
-            --success: #a7deab;  /* True: 清新綠 */
-            --error: #f8716b;    /* False: 粉紅珊瑚 */
-            /* ------------------ */
+            /* --- 按鈕顏色更新：高對比色系 --- */
+            --success: #2ecc71;  /* True: 亮粉綠 */
+            --error: #ff7675;    /* False: 珊瑚紅 */
+            /* --------------------------- */
             --bg: #f4f7f9;
             --grey: #7f8c8d;
         }
@@ -68,7 +68,6 @@
         .cta-button { display: inline-block; width: 100%; padding: 20px; background: var(--secondary); color: white; text-decoration: none; border-radius: 50px; font-size: 1.2rem; font-weight: bold; margin: 15px 0; box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4); }
         .retry-link { display: inline-block; margin-top: 10px; color: var(--blue); text-decoration: none; font-weight: bold; font-size: 1rem; cursor: pointer; }
 
-        /* --- 蝦皮導購樣式 --- */
         .footer-upsell { 
             font-size: 0.8rem; color: var(--grey); line-height: 1.6; 
             margin-top: 40px; border-top: 1px dashed #ccc; padding-top: 20px; 
@@ -131,7 +130,7 @@
             <div class="footer-upsell">
                 💡 覺得這套「直覺單字+實戰刷題」模式很有效？<br>
                 完整 16 集多益衝刺計畫，現已在蝦皮上架。<br>
-                <a href="https://shopee.tw/YOUR_LINK" class="shopee-link">點此查看完整計畫</a>
+                <a href="https://shopee.tw/YOUR_LINK" class="shopee-link" target="_blank">點此查看完整計畫</a>
             </div>
         </div>
     </div>
@@ -273,7 +272,7 @@ function renderHistory(history) {
     }
     listEl.innerHTML = history.map((item, idx) => `
         <div class="history-item">
-            <span>紀錄 (${item.time})</span>
+            <span>第 ${history.length - idx} 次練習 (${item.time})</span>
             <span style="font-weight:bold; color:var(--blue)">${Math.round(item.score)} 分</span>
         </div>
     `).join('');
