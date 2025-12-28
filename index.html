@@ -9,80 +9,69 @@
             --primary: #2c3e50;
             --secondary: #f39c12; 
             --blue: #3498db;
-            --success: #2ecc71;  /* 亮粉綠 */
-            --error: #ff7675;    /* 珊瑚紅 */
+            --success: #2ecc71; 
+            --error: #ff7675;   
             --bg: #f4f7f9;
             --grey: #7f8c8d;
         }
-        body { font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; background: var(--bg); margin: 0; padding: 10px; display: flex; justify-content: center; }
-        .container { background: white; width: 100%; max-width: 600px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); overflow: hidden; }
-        .banner { width: 100%; height: auto; display: block; }
-        .content-padding { padding: 25px; }
-
-        .intro-header { margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
-        .intro-header h1 { font-size: 1.5rem; color: var(--primary); margin: 0 0 10px 0; }
-        .intro-header p { font-size: 1rem; color: #555; line-height: 1.8; margin: 0; font-weight: bold; }
-
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-weight: bold; font-size: 0.9rem; color: var(--grey); }
-        .progress-container { width: 100%; background: #eee; height: 6px; border-radius: 3px; margin-bottom: 20px; }
-        .progress-bar { height: 100%; background: var(--blue); width: 0%; transition: 0.4s; }
-        .type-tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; background: #e8f4fd; color: var(--blue); margin-bottom: 10px; font-weight: bold; }
+        body { font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; background: var(--bg); margin: 0; padding: 5px; display: flex; justify-content: center; }
+        .container { background: white; width: 100%; max-width: 500px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; }
         
-        .question-box { min-height: 120px; margin-bottom: 20px; }
-        .word { font-size: 2.2rem; font-weight: 800; color: var(--primary); margin-bottom: 15px; }
-        .q-text { font-size: 1.25rem; color: #333; line-height: 1.6; padding: 18px; background: #f9f9f9; border-radius: 8px; border-left: 5px solid #ddd; }
+        /* Banner 調整：測驗時顯示，結果頁縮小 */
+        .banner { width: 100%; height: auto; display: block; transition: 0.3s; }
+        .banner.compact { max-height: 60px; object-fit: cover; }
 
-        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        button { 
-            padding: 18px; border: none; border-radius: 12px; font-size: 1.1rem; 
-            cursor: pointer; transition: 0.2s; font-weight: bold;
-            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
-            color: white;
-        }
-        button:active { transform: translateY(2px); box-shadow: none; }
+        .content-padding { padding: 15px 20px; }
+
+        .intro-header h1 { font-size: 1.3rem; color: var(--primary); margin: 0 0 5px 0; }
+        .intro-header p { font-size: 0.9rem; color: #555; margin: 0; font-weight: bold; }
+
+        .header { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: bold; font-size: 0.85rem; color: var(--grey); }
+        .progress-container { width: 100%; background: #eee; height: 5px; border-radius: 3px; margin-bottom: 15px; }
+        .progress-bar { height: 100%; background: var(--blue); width: 0%; transition: 0.4s; }
+        
+        .question-box { min-height: 100px; margin-bottom: 15px; }
+        .type-tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.75rem; background: #e8f4fd; color: var(--blue); margin-bottom: 8px; font-weight: bold; }
+        .word { font-size: 1.8rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+        .q-text { font-size: 1.1rem; color: #333; line-height: 1.5; padding: 12px; background: #f9f9f9; border-radius: 8px; border-left: 4px solid #ddd; }
+
+        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        button { padding: 15px; border: none; border-radius: 10px; font-size: 1rem; cursor: pointer; font-weight: bold; color: white; }
         .btn-true { background: var(--success); }
         .btn-false { background: var(--error); }
-        .next-btn { width: 100%; background: var(--primary); color: white; margin-top: 15px; display: none; }
+        .next-btn { width: 100%; background: var(--primary); margin-top: 10px; display: none; }
         
-        .feedback { display: none; margin-top: 20px; padding: 15px; border-radius: 10px; font-size: 1.25rem; line-height: 1.6; animation: fadeIn 0.3s; font-weight: bold; text-align: center; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .correct-bg { background: #d4edda; color: #155724; border: 2px solid #c3e6cb; }
-        .wrong-bg { background: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; }
+        .feedback { display: none; margin-top: 15px; padding: 10px; border-radius: 8px; font-size: 1rem; font-weight: bold; text-align: center; }
+        .correct-bg { background: #d4edda; color: #155724; }
+        .wrong-bg { background: #f8d7da; color: #721c24; }
 
-        .result-screen { display: none; padding: 20px; text-align: center; }
-        .final-score { font-size: 3.5rem; color: var(--blue); font-weight: bold; margin-bottom: 5px; }
+        /* 結果頁樣式優化 */
+        .result-screen { display: none; text-align: center; }
+        .final-score { font-size: 2.5rem; color: var(--blue); font-weight: bold; margin-bottom: 10px; }
         
-        .history-container { background: #f0f4f8; padding: 15px; border-radius: 10px; margin: 20px 0; text-align: left; }
-        .history-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ccc; padding-bottom: 8px; margin-bottom: 10px; }
-        .history-title { font-size: 1rem; font-weight: bold; color: var(--primary); }
-        .clear-btn { font-size: 0.75rem; color: #e74c3c; cursor: pointer; background: none; border: 1px solid #e74c3c; padding: 2px 6px; border-radius: 4px; box-shadow: none; font-weight: normal; }
+        .history-container { background: #f8fafc; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: left; }
+        .history-item { display: flex; justify-content: space-between; font-size: 0.8rem; color: #666; padding: 3px 0; border-bottom: 1px dashed #eee; }
         
-        .history-item { display: flex; justify-content: space-between; font-size: 0.85rem; color: #555; padding: 4px 0; border-bottom: 1px dashed #ddd; }
-        
-        .review-container { text-align: left; margin-top: 20px; border-top: 2px solid #eee; padding-top: 15px; }
-        .review-item { padding: 10px; border-radius: 8px; margin-bottom: 8px; background: #f9f9f9; font-size: 0.9rem; display: flex; align-items: flex-start; }
-        .review-icon { margin-right: 8px; }
+        .review-container { text-align: left; margin-bottom: 15px; max-height: 180px; overflow-y: auto; border: 1px solid #eee; border-radius: 8px; padding: 5px; }
+        .review-item { padding: 6px; border-bottom: 1px solid #f1f1f1; font-size: 0.85rem; display: flex; }
+        .review-icon { margin-right: 6px; }
 
-        .cta-button { display: inline-block; width: 100%; padding: 20px; background: var(--secondary); color: white; text-decoration: none; border-radius: 50px; font-size: 1.2rem; font-weight: bold; margin: 15px 0; box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4); }
-        .retry-link { display: inline-block; margin-top: 10px; color: var(--blue); text-decoration: none; font-weight: bold; font-size: 1rem; cursor: pointer; }
+        .cta-button { display: block; width: 100%; padding: 15px; background: var(--secondary); color: white; text-decoration: none; border-radius: 30px; font-size: 1.1rem; font-weight: bold; margin: 10px 0; box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3); }
+        .retry-link { display: inline-block; color: var(--blue); text-decoration: none; font-size: 0.9rem; font-weight: bold; cursor: pointer; margin-bottom: 5px; }
 
-        .footer-upsell { 
-            font-size: 0.8rem; color: var(--grey); line-height: 1.6; 
-            margin-top: 40px; border-top: 1px dashed #ccc; padding-top: 20px; 
-            text-align: left; 
-        }
-        .shopee-link { color: var(--blue); text-decoration: underline; font-weight: bold; }
+        .footer-upsell { font-size: 0.75rem; color: #999; line-height: 1.4; border-top: 1px solid #eee; padding-top: 10px; text-align: left; }
+        .shopee-link { color: var(--blue); font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <img src="banner.jpg" alt="EP1 打底特訓" class="banner"> 
+    <img src="banner.jpg" id="main-banner" alt="EP1 打底特訓" class="banner"> 
 
     <div class="content-padding">
         <div id="intro-area" class="intro-header">
-            <h1>【EP1】多益600核心單字・打底特訓</h1>
-            <p>🔥 挑戰 3 秒直覺！連結中英字義與例句。🔥</p>
+            <h1>【EP1】核心單字・打底特訓</h1>
+            <p>🔥 挑戰直覺！5 題快節奏練習。🔥</p>
         </div>
 
         <div id="quiz-section">
@@ -93,7 +82,7 @@
             <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
             
             <div class="question-box">
-                <div id="type-tag" class="type-tag">類型載入中</div>
+                <div id="type-tag" class="type-tag">載入中</div>
                 <div id="word" class="word">Word</div>
                 <div id="content" class="q-text">載入中...</div>
             </div>
@@ -111,30 +100,26 @@
             <div class="final-score" id="final-score">0</div>
             
             <div class="history-container">
-                <div class="history-header">
-                    <span class="history-title">📈 歷次成績追蹤</span>
-                    <button class="clear-btn" onclick="confirmClear()">清除紀錄</button>
-                </div>
+                <div style="font-size:0.8rem; font-weight:bold; margin-bottom:5px; color:var(--primary)">📈 成績追蹤 (最近5次)</div>
                 <div id="history-list"></div>
             </div>
 
-            <div class="review-container">
-                <div id="review-list"></div>
-            </div>
+            <div class="review-container" id="review-list"></div>
             
-            <a href="YOUR_NEXT_QUIZ_URL" class="cta-button">👉 前往：【EP1】實戰驗收</a><br>
-            <span class="retry-link" onclick="initQuiz()">↺ 再練一次這組單字</span>
+            <div><span class="retry-link" onclick="initQuiz()">↺ 再練一次這組單字</span></div>
+
+            <a href="YOUR_VERIFICATION_URL" class="cta-button">👉 前往：【EP1】實戰驗收</a>
 
             <div class="footer-upsell">
-                💡 覺得這套「直覺單字+實戰刷題」模式很有效？<br>
-                完整 16 集多益衝刺計畫，現已在蝦皮上架。<br>
-                <a href="https://shopee.tw/YOUR_LINK" class="shopee-link" target="_blank">點此查看完整計畫</a>
+                💡 這套模式有效吧!完整 16 集多益衝刺計畫已在蝦皮上架。<br>
+                <a href="https://shopee.tw/YOUR_LINK" class="shopee-link" target="_blank">點此前往蝦皮賣場看更多</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+// (數據部分保持不變)
 const rawData = [
     { type: "單字辨析", word: "anyway", show: "無論如何", ans: true, feedback: "anyway 是「無論如何」。" },
     { type: "句型搭配", word: "anyway", show: "Let’s do it ______. / 填入：construction", ans: false, feedback: "應填入 anyway。" },
@@ -194,12 +179,10 @@ let score = 0;
 let userHistory = []; 
 
 function initQuiz() {
-    // 每次開始從 50 題中隨機抽 5 題
     const shuffled = [...rawData].sort(() => 0.5 - Math.random());
     questions = shuffled.slice(0, 5);
-    currentIndex = 0;
-    score = 0;
-    userHistory = [];
+    currentIndex = 0; score = 0; userHistory = [];
+    document.getElementById('main-banner').classList.remove('compact');
     document.getElementById('intro-area').style.display = 'block';
     document.getElementById('quiz-section').style.display = 'block';
     document.getElementById('result-section').style.display = 'none';
@@ -223,7 +206,7 @@ function loadQuestion() {
     }
     document.getElementById('feedback').style.display = 'none';
     document.getElementById('next-btn').style.display = 'none';
-    document.querySelectorAll('.btn-group button').forEach(b => { b.disabled = false; b.style.opacity = '1'; });
+    document.querySelectorAll('.btn-group button').forEach(b => b.disabled = false);
 }
 
 function handleAnswer(userAns) {
@@ -231,12 +214,10 @@ function handleAnswer(userAns) {
     const feedback = document.getElementById('feedback');
     document.querySelectorAll('.btn-group button').forEach(b => b.disabled = true);
     feedback.style.display = 'block';
-    
     const isCorrect = (userAns === q.ans);
     userHistory.push({ word: q.word, isCorrect: isCorrect, feedback: q.feedback });
-
     if (isCorrect) {
-        score += 20; // 5題，每題20分
+        score += 20;
         feedback.innerText = "✅ " + q.feedback;
         feedback.className = "feedback correct-bg";
     } else {
@@ -249,50 +230,27 @@ function handleAnswer(userAns) {
 
 function nextQuestion() {
     currentIndex++;
-    if (currentIndex < 5) { loadQuestion(); } else { showResult(); }
-}
-
-function saveToLocalStorage(finalScore) {
-    let history = JSON.parse(localStorage.getItem('toeic_history')) || [];
-    const now = new Date();
-    const timeStr = `${now.getMonth()+1}/${now.getDate()} ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
-    history.unshift({ score: finalScore, time: timeStr });
-    if(history.length > 5) history.pop();
-    localStorage.setItem('toeic_history', JSON.stringify(history));
-    renderHistory(history);
-}
-
-function renderHistory(history) {
-    const listEl = document.getElementById('history-list');
-    if (!history || history.length === 0) {
-        listEl.innerHTML = '<div style="font-size:0.85rem; color:#999;">暫無練習紀錄</div>';
-        return;
-    }
-    listEl.innerHTML = history.map((item, idx) => `
-        <div class="history-item">
-            <span>第 ${history.length - idx} 次練習 (${item.time})</span>
-            <span style="font-weight:bold; color:var(--blue)">${Math.round(item.score)} 分</span>
-        </div>
-    `).join('');
-}
-
-function confirmClear() {
-    if (confirm("確定要清除所有練習紀錄嗎？")) {
-        localStorage.removeItem('toeic_history');
-        renderHistory([]);
-    }
+    if (currentIndex < 5) loadQuestion(); else showResult();
 }
 
 function showResult() {
+    document.getElementById('main-banner').classList.add('compact');
     document.getElementById('intro-area').style.display = 'none';
     document.getElementById('quiz-section').style.display = 'none';
     document.getElementById('result-section').style.display = 'block';
-    const finalScore = Math.round(score);
-    document.getElementById('final-score').innerText = finalScore + " / 100";
-    saveToLocalStorage(finalScore);
+    document.getElementById('final-score').innerText = Math.round(score) + " / 100";
+    
+    // 儲存紀錄
+    let history = JSON.parse(localStorage.getItem('toeic_history')) || [];
+    history.unshift({ score: score, time: new Date().getMonth()+1 + '/' + new Date().getDate() });
+    if(history.length > 5) history.pop();
+    localStorage.setItem('toeic_history', JSON.stringify(history));
 
-    const listEl = document.getElementById('review-list');
-    listEl.innerHTML = userHistory.map(item => `
+    document.getElementById('history-list').innerHTML = history.map(item => `
+        <div class="history-item"><span>紀錄 (${item.time})</span><b>${Math.round(item.score)} 分</b></div>
+    `).join('');
+
+    document.getElementById('review-list').innerHTML = userHistory.map(item => `
         <div class="review-item">
             <span class="review-icon">${item.isCorrect ? '✅' : '❌'}</span>
             <div><b>${item.word || ''}</b> ${item.feedback}</div>
