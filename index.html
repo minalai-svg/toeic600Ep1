@@ -44,7 +44,7 @@
         .correct-bg { background: #d4edda; color: #155724; }
         .wrong-bg { background: #f8d7da; color: #721c24; }
 
-        /* 結果頁樣式優化 */
+        /* 結果頁樣式 */
         .result-screen { display: none; text-align: center; }
         .final-score { font-size: 2.2rem; color: var(--blue); font-weight: bold; margin-bottom: 8px; }
         
@@ -52,13 +52,11 @@
         .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
         .history-title { font-size: 0.85rem; font-weight: bold; color: var(--primary); }
         
-        /* 強化清除按鈕在手機上的顯眼度 */
         .clear-btn { 
             font-size: 0.75rem; color: #e74c3c; cursor: pointer; background: #fff1f0; 
             border: 1px solid #ffa39e; padding: 3px 8px; border-radius: 6px; 
-            transition: 0.2s; box-shadow: none; font-weight: bold;
+            transition: 0.2s; font-weight: bold;
         }
-        .clear-btn:active { background: #ffccc7; }
 
         .history-item { display: flex; justify-content: space-between; font-size: 0.8rem; color: #666; padding: 4px 0; border-bottom: 1px dashed #e2e8f0; }
         
@@ -66,10 +64,20 @@
         .review-item { padding: 5px; border-bottom: 1px solid #f1f1f1; font-size: 0.8rem; display: flex; align-items: flex-start; }
         .review-icon { margin-right: 6px; flex-shrink: 0; }
 
-        .cta-button { display: block; width: 100%; padding: 14px; background: var(--secondary); color: white; text-decoration: none; border-radius: 30px; font-size: 1.1rem; font-weight: bold; margin: 8px 0; box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3); }
-        .retry-link { display: inline-block; color: var(--blue); text-decoration: none; font-size: 0.85rem; font-weight: bold; cursor: pointer; margin-bottom: 10px; }
+        /* 置中關鍵優化點 */
+        .cta-button { 
+            display: block; width: 100%; padding: 14px; background: var(--secondary); color: white; 
+            text-decoration: none; border-radius: 30px; font-size: 1.1rem; font-weight: bold; 
+            margin: 15px 0 10px 0; box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+            text-align: center; box-sizing: border-box; /* 確保寬度計算包含 padding */
+        }
+        
+        .retry-link { display: inline-block; color: var(--blue); text-decoration: none; font-size: 0.85rem; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
 
-        .footer-upsell { font-size: 0.75rem; color: #999; line-height: 1.4; border-top: 1px solid #eee; padding-top: 10px; text-align: left; }
+        .footer-upsell { 
+            font-size: 0.75rem; color: #999; line-height: 1.6; border-top: 1px solid #eee; 
+            padding-top: 15px; text-align: center; /* 這裡改為置中 */
+        }
         .shopee-link { color: var(--blue); font-weight: bold; text-decoration: underline; }
     </style>
 </head>
@@ -121,18 +129,18 @@
             
             <div><span class="retry-link" onclick="initQuiz()">↺ 再練一次這組單字</span></div>
 
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNkem-vuwWTDc5eEfhv4FlqpubNv7dsoY0uFQEcv4c5rCtyg/viewform?usp=header" class="cta-button">👉 前往：【EP1】實戰驗收</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNkem-vuwWTDc5eEfhv4FlqpubNv7dsoY0uFQEcv4c5rCtyg/viewform?usp=header" class="cta-button" target="_blank">👉 前往：【EP1】實戰驗收</a>
 
             <div class="footer-upsell">
                 💡 覺得這套模式有效？完整 16 集多益衝刺計畫已在蝦皮上架。<br>
-                <a href="https://shopee.tw/YOUR_LINK" class="shopee-link" target="_blank">點此前往蝦皮賣場</a>
+                <a href="https://shopee.tw/YOUR_LINK" class="shopee-link" target="_blank">點此前往蝦皮賣場看更多</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-// 單字資料數據
+// (資料與邏輯保持不變)
 const rawData = [
     { type: "單字辨析", word: "anyway", show: "無論如何", ans: true, feedback: "anyway 是「無論如何」。" },
     { type: "句型搭配", word: "anyway", show: "Let’s do it ______. / 填入：construction", ans: false, feedback: "應填入 anyway。" },
