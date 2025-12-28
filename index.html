@@ -17,7 +17,7 @@
         body { font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; background: var(--bg); margin: 0; padding: 5px; display: flex; justify-content: center; }
         .container { background: white; width: 100%; max-width: 500px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; }
         
-        .banner { width: 100%; height: auto; display: block; transition: 0.3s; }
+        .banner { width: 100%; height: auto; display: block; transition: 0.2s; }
         .banner.compact { max-height: 50px; object-fit: cover; }
 
         .content-padding { padding: 12px 18px; }
@@ -26,7 +26,7 @@
         .intro-header p { font-size: 0.9rem; color: #555; margin: 0; font-weight: bold; }
 
         .header { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: bold; font-size: 0.85rem; color: var(--grey); }
-        .progress-container { width: 100%; background: #eee; height: 5px; border-radius: 3px; margin-bottom: 15px; }
+        .progress-container { width: 100%; background: #eee; height: 5px; border-radius: 3px; margin-bottom: 12px; }
         .progress-bar { height: 100%; background: var(--blue); width: 0%; transition: 0.4s; }
         
         .question-box { min-height: 90px; margin-bottom: 12px; }
@@ -44,24 +44,33 @@
         .correct-bg { background: #d4edda; color: #155724; }
         .wrong-bg { background: #f8d7da; color: #721c24; }
 
-        /* 結果頁樣式 */
+        /* 結果頁樣式優化 */
         .result-screen { display: none; text-align: center; }
         .final-score { font-size: 2.2rem; color: var(--blue); font-weight: bold; margin-bottom: 8px; }
         
-        .history-container { background: #f8fafc; padding: 8px; border-radius: 8px; margin-bottom: 12px; text-align: left; }
-        .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
-        .clear-btn { font-size: 0.7rem; color: #e74c3c; cursor: pointer; background: none; border: 1px solid #e74c3c; padding: 1px 5px; border-radius: 4px; font-weight: normal; }
-        .history-item { display: flex; justify-content: space-between; font-size: 0.8rem; color: #666; padding: 3px 0; border-bottom: 1px dashed #eee; }
+        .history-container { background: #f8fafc; padding: 10px; border-radius: 8px; margin-bottom: 10px; text-align: left; border: 1px solid #edf2f7; }
+        .history-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .history-title { font-size: 0.85rem; font-weight: bold; color: var(--primary); }
         
-        .review-container { text-align: left; margin-bottom: 12px; max-height: 150px; overflow-y: auto; border: 1px solid #eee; border-radius: 8px; padding: 5px; }
-        .review-item { padding: 5px; border-bottom: 1px solid #f1f1f1; font-size: 0.8rem; display: flex; }
-        .review-icon { margin-right: 6px; }
+        /* 強化清除按鈕在手機上的顯眼度 */
+        .clear-btn { 
+            font-size: 0.75rem; color: #e74c3c; cursor: pointer; background: #fff1f0; 
+            border: 1px solid #ffa39e; padding: 3px 8px; border-radius: 6px; 
+            transition: 0.2s; box-shadow: none; font-weight: bold;
+        }
+        .clear-btn:active { background: #ffccc7; }
 
-        .cta-button { display: block; width: 100%; padding: 15px; background: var(--secondary); color: white; text-decoration: none; border-radius: 30px; font-size: 1.1rem; font-weight: bold; margin: 8px 0; box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3); }
-        .retry-link { display: inline-block; color: var(--blue); text-decoration: none; font-size: 0.85rem; font-weight: bold; cursor: pointer; margin-bottom: 8px; }
+        .history-item { display: flex; justify-content: space-between; font-size: 0.8rem; color: #666; padding: 4px 0; border-bottom: 1px dashed #e2e8f0; }
+        
+        .review-container { text-align: left; margin-bottom: 12px; max-height: 140px; overflow-y: auto; border: 1px solid #eee; border-radius: 8px; padding: 5px; }
+        .review-item { padding: 5px; border-bottom: 1px solid #f1f1f1; font-size: 0.8rem; display: flex; align-items: flex-start; }
+        .review-icon { margin-right: 6px; flex-shrink: 0; }
+
+        .cta-button { display: block; width: 100%; padding: 14px; background: var(--secondary); color: white; text-decoration: none; border-radius: 30px; font-size: 1.1rem; font-weight: bold; margin: 8px 0; box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3); }
+        .retry-link { display: inline-block; color: var(--blue); text-decoration: none; font-size: 0.85rem; font-weight: bold; cursor: pointer; margin-bottom: 10px; }
 
         .footer-upsell { font-size: 0.75rem; color: #999; line-height: 1.4; border-top: 1px solid #eee; padding-top: 10px; text-align: left; }
-        .shopee-link { color: var(--blue); font-weight: bold; }
+        .shopee-link { color: var(--blue); font-weight: bold; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -72,7 +81,7 @@
     <div class="content-padding">
         <div id="intro-area" class="intro-header">
             <h1>【EP1】核心單字・打底特訓</h1>
-            <p>🔥 挑戰直覺！5 題快節奏練習。🔥</p>
+            <p>🔥 直覺 3 秒挑戰！5 題快速上手。🔥</p>
         </div>
 
         <div id="quiz-section">
@@ -98,11 +107,11 @@
         </div>
 
         <div id="result-section" class="result-screen">
-            <div class="final-score" id="final-score">0</div>
+            <div class="final-score" id="final-score">0 / 100</div>
             
             <div class="history-container">
                 <div class="history-header">
-                    <span style="font-size:0.8rem; font-weight:bold; color:var(--primary)">📈 最近 5 次練習紀錄</span>
+                    <span class="history-title">📈 最近 5 次成績紀錄</span>
                     <button class="clear-btn" onclick="confirmClear()">清除紀錄</button>
                 </div>
                 <div id="history-list"></div>
@@ -116,14 +125,14 @@
 
             <div class="footer-upsell">
                 💡 覺得這套模式有效？完整 16 集多益衝刺計畫已在蝦皮上架。<br>
-                <a href="https://shopee.tw/YOUR_LINK" class="shopee-link" target="_blank">點此前往蝦皮賣場看更多</a>
+                <a href="https://shopee.tw/YOUR_LINK" class="shopee-link" target="_blank">點此前往蝦皮賣場</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-// (數據保持不變，略)
+// 單字資料數據
 const rawData = [
     { type: "單字辨析", word: "anyway", show: "無論如何", ans: true, feedback: "anyway 是「無論如何」。" },
     { type: "句型搭配", word: "anyway", show: "Let’s do it ______. / 填入：construction", ans: false, feedback: "應填入 anyway。" },
@@ -180,12 +189,12 @@ const rawData = [
 let questions = [];
 let currentIndex = 0;
 let score = 0;
-let userHistory = []; 
+let userHistoryList = []; 
 
 function initQuiz() {
     const shuffled = [...rawData].sort(() => 0.5 - Math.random());
     questions = shuffled.slice(0, 5);
-    currentIndex = 0; score = 0; userHistory = [];
+    currentIndex = 0; score = 0; userHistoryList = [];
     document.getElementById('main-banner').classList.remove('compact');
     document.getElementById('intro-area').style.display = 'block';
     document.getElementById('quiz-section').style.display = 'block';
@@ -219,7 +228,7 @@ function handleAnswer(userAns) {
     document.querySelectorAll('.btn-group button').forEach(b => b.disabled = true);
     feedback.style.display = 'block';
     const isCorrect = (userAns === q.ans);
-    userHistory.push({ word: q.word, isCorrect: isCorrect, feedback: q.feedback });
+    userHistoryList.push({ word: q.word, isCorrect: isCorrect, feedback: q.feedback });
     if (isCorrect) {
         score += 20;
         feedback.innerText = "✅ " + q.feedback;
@@ -244,19 +253,16 @@ function showResult() {
     document.getElementById('result-section').style.display = 'block';
     document.getElementById('final-score').innerText = Math.round(score) + " / 100";
     
-    // 取得當前時間（包含幾點幾分）
     const now = new Date();
     const timeStr = `${now.getMonth() + 1}/${now.getDate()} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
 
-    // 更新歷史紀錄
     let history = JSON.parse(localStorage.getItem('toeic_history')) || [];
     history.unshift({ score: score, time: timeStr });
     if(history.length > 5) history.pop();
     localStorage.setItem('toeic_history', JSON.stringify(history));
     renderHistoryList(history);
 
-    // 更新回顧列表
-    document.getElementById('review-list').innerHTML = userHistory.map(item => `
+    document.getElementById('review-list').innerHTML = userHistoryList.map(item => `
         <div class="review-item">
             <span class="review-icon">${item.isCorrect ? '✅' : '❌'}</span>
             <div><b>${item.word || ''}</b> ${item.feedback}</div>
@@ -267,13 +273,13 @@ function showResult() {
 function renderHistoryList(history) {
     const listEl = document.getElementById('history-list');
     if (!history || history.length === 0) {
-        listEl.innerHTML = '<div style="font-size:0.8rem; color:#999;">尚無紀錄</div>';
+        listEl.innerHTML = '<div style="font-size:0.8rem; color:#999; padding: 5px 0;">尚無紀錄</div>';
         return;
     }
     listEl.innerHTML = history.map(item => `
         <div class="history-item">
-            <span>練習時間：${item.time}</span>
-            <b>${Math.round(item.score)} 分</b>
+            <span>時間：${item.time}</span>
+            <b style="color:var(--blue)">${Math.round(item.score)} 分</b>
         </div>
     `).join('');
 }
