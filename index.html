@@ -9,10 +9,8 @@
             --primary: #2c3e50;
             --secondary: #f39c12; 
             --blue: #3498db;
-            /* --- 按鈕顏色更新：高對比色系 --- */
-            --success: #2ecc71;  /* True: 亮粉綠 */
-            --error: #ff7675;    /* False: 珊瑚紅 */
-            /* --------------------------- */
+            --success: #2ecc71;  /* 亮粉綠 */
+            --error: #ff7675;    /* 珊瑚紅 */
             --bg: #f4f7f9;
             --grey: #7f8c8d;
         }
@@ -89,7 +87,7 @@
 
         <div id="quiz-section">
             <div class="header">
-                <span id="q-count">題目 1 / 8</span>
+                <span id="q-count">題目 1 / 5</span>
                 <span id="score-count">得分: 0</span>
             </div>
             <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
@@ -137,7 +135,6 @@
 </div>
 
 <script>
-// 完整 50 題題庫
 const rawData = [
     { type: "單字辨析", word: "anyway", show: "無論如何", ans: true, feedback: "anyway 是「無論如何」。" },
     { type: "句型搭配", word: "anyway", show: "Let’s do it ______. / 填入：construction", ans: false, feedback: "應填入 anyway。" },
@@ -197,8 +194,9 @@ let score = 0;
 let userHistory = []; 
 
 function initQuiz() {
+    // 每次開始從 50 題中隨機抽 5 題
     const shuffled = [...rawData].sort(() => 0.5 - Math.random());
-    questions = shuffled.slice(0, 8);
+    questions = shuffled.slice(0, 5);
     currentIndex = 0;
     score = 0;
     userHistory = [];
@@ -211,8 +209,8 @@ function initQuiz() {
 
 function loadQuestion() {
     const q = questions[currentIndex];
-    document.getElementById('q-count').innerText = `題目 ${currentIndex + 1} / 8`;
-    document.getElementById('progress').style.width = `${((currentIndex + 1) / 8) * 100}%`;
+    document.getElementById('q-count').innerText = `題目 ${currentIndex + 1} / 5`;
+    document.getElementById('progress').style.width = `${((currentIndex + 1) / 5) * 100}%`;
     document.getElementById('type-tag').innerText = q.type;
     const wordEl = document.getElementById('word');
     if (q.type === "句型搭配") {
@@ -238,7 +236,7 @@ function handleAnswer(userAns) {
     userHistory.push({ word: q.word, isCorrect: isCorrect, feedback: q.feedback });
 
     if (isCorrect) {
-        score += 12.5;
+        score += 20; // 5題，每題20分
         feedback.innerText = "✅ " + q.feedback;
         feedback.className = "feedback correct-bg";
     } else {
@@ -251,7 +249,7 @@ function handleAnswer(userAns) {
 
 function nextQuestion() {
     currentIndex++;
-    if (currentIndex < 8) { loadQuestion(); } else { showResult(); }
+    if (currentIndex < 5) { loadQuestion(); } else { showResult(); }
 }
 
 function saveToLocalStorage(finalScore) {
